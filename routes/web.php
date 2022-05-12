@@ -1,18 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TicketController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[TicketController::class,'index']);
+Route::get('/add', [TicketController::class, 'create']);
+Route::post('/add', [TicketController::class, 'store']);
+Route::post('/destroy/{id}', [TicketController::class,'destroy']);
+Route::post('/edit/{id}', [TicketController::class, 'edit']);
